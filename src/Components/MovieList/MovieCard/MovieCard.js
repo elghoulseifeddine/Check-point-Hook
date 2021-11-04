@@ -23,6 +23,7 @@ const MovieCard = ({title, affiche, description, rating}) => {
     edit={false}
     activeColor="#ffd700"
     classNames="rates"
+    onChange={null}
   />
   </Card>
  

@@ -3,15 +3,15 @@ import {Navbar, Container, Nav, Form, Button,FormControl} from 'react-bootstrap'
 import MovieAdd from '../MovieAdd/MovieAdd';
 import ReactStars from "react-rating-stars-component";
 
-const Navbaar = ({setInputSearch, addMovie, setRateSearch}) => {
+const Navbaar = ({setInputSearch, addMovie, setRateSearch,rateSearch}) => {
 
     const handleChange =(e)=> {
     let newValue= e.target.value;
     setInputSearch(newValue)
   }
-  const ratingChanged = (newRating) => {
-    setRateSearch(newRating);
-  };
+  // const ratingChanged = (newRating) => {
+  //   setRateSearch(newRating);
+  // };
   return (
     <div>
     <Navbar bg="light" expand="lg">
@@ -33,7 +33,7 @@ const Navbaar = ({setInputSearch, addMovie, setRateSearch}) => {
     // value={5}
     activeColor="#ffd700"
     classNames="navRates"
-    onChange={ratingChanged}
+    onChange={(e)=>setRateSearch(e)}
   />
           <FormControl
             type="search"

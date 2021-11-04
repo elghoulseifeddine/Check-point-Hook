@@ -32,7 +32,7 @@ const MovieAdd = ({ addMovie }) => {
   const submitMovie = (e) => {
     e.preventDefault();
     let newMovie = {
-      id: uuidv4(),
+      id : uuidv4(),
       title,
       affiche,
       description,

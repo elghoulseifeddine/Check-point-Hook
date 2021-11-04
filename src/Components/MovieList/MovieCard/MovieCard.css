@@ -1,0 +1,20 @@
+
+.film{
+    position: absolute;
+    margin: 50px 50px 10px 50px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 200px;
+    padding: 10px; 
+}
+.rates{
+    position: relative;
+    width: fit-content;
+margin: 0 auto !important;
+}
+.navRates{
+  display: flex;
+    width:110%;
+  
+  }

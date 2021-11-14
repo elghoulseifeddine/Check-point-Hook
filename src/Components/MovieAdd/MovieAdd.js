@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import Modal from "react-modal";
 import { Form, Button, Col } from "react-bootstrap";
 import { v4 as uuidv4 } from "uuid";
-import './MovieAdd.css';
+import "./MovieAdd.css";
+import ReactStars from "react-rating-stars-component";
 
 const customStyles = {
   content: {
@@ -20,7 +21,7 @@ const MovieAdd = ({ addMovie }) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [affiche, setAffiche] = useState("");
-  const [rating, setRating] = useState("");
+  const [addRate, setAddRate] = useState("");
   function openModal() {
     setIsOpen(true);
   }
@@ -32,27 +33,30 @@ const MovieAdd = ({ addMovie }) => {
   const submitMovie = (e) => {
     e.preventDefault();
     let newMovie = {
-      id : uuidv4(),
+      id: uuidv4(),
       title,
       affiche,
       description,
-      rating,
+      rating:addRate,
     };
 
-    if(title === "" || affiche=== "" || description === "" || rating === ""){return (closeModal(),
-    alert("You are missing some inputs!!"))}
+    if (title === "" || affiche === "" || description === "" || addRate==="") {
+     return alert("Mezzelt ne9es");
+    }
 
     addMovie(newMovie);
     closeModal();
     setTitle("");
     setDescription("");
     setAffiche("");
-    setRating("")
+    setAddRate("");
   };
 
   return (
     <div>
-      <button className="btnAdd" onClick={openModal}>Add Movie</button>
+      <button className="btnAdd" onClick={openModal}>
+        Add Movie
+      </button>
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
@@ -84,13 +88,12 @@ const MovieAdd = ({ addMovie }) => {
               onChange={(e) => setDescription(e.target.value)}
             />
           </Form.Group>
-          <Form.Group className="mb-3" controlId="formGridAddress2">
-            <Form.Label> Rating : </Form.Label>
-            <Form.Control
-              placeholder="Enter Rating (From 0 to 5) ..."
-              onChange={(e) => setRating(e.target.value)}
-            />
-          </Form.Group>
+          <ReactStars
+            count={5}
+            onChange={(e)=>setAddRate(e)}
+            size={24}
+            activeColor="#ffd700"
+          />
 
           <Form.Group className="mb-3" id="formGridCheckbox">
             <Form.Check type="checkbox" label="Check me out" />
@@ -99,12 +102,11 @@ const MovieAdd = ({ addMovie }) => {
           <Button
             variant="primary"
             type="submit"
-            onClick={(e) =>submitMovie(e)}
+            onClick={(e) => submitMovie(e)}
           >
             Add
           </Button>
         </Form>
-    
       </Modal>
     </div>
   );

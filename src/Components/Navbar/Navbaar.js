@@ -2,21 +2,24 @@ import React, {useState} from 'react';
 import {Navbar, Container, Nav, Form, Button,FormControl} from 'react-bootstrap';
 import MovieAdd from '../MovieAdd/MovieAdd';
 import ReactStars from "react-rating-stars-component";
+import '../MovieList/MovieCard/MovieCard.css'
+import { Link } from "react-router-dom";
 
-const Navbaar = ({setInputSearch, addMovie, setRateSearch,rateSearch}) => {
+const Navbaar = ({setInputSearch, addMovie, setRate}) => {
 
     const handleChange =(e)=> {
     let newValue= e.target.value;
     setInputSearch(newValue)
   }
-  // const ratingChanged = (newRating) => {
-  //   setRateSearch(newRating);
-  // };
+  const ratingChanged = (newRating) => {
+    console.log(newRating);
+  };
+
   return (
     <div>
     <Navbar bg="light" expand="lg">
     <Container fluid>
-      <Navbar.Brand href="#" style={{color: "rgb(214, 3, 3)"}}>Movie App</Navbar.Brand>
+      <Link to={"/"}><Navbar.Brand href="#" style={{color: "rgb(214, 3, 3)"}}>Movie App</Navbar.Brand></Link>
       <Navbar.Toggle aria-controls="navbarScroll" />
       <Navbar.Collapse id="navbarScroll">
         <Nav
@@ -28,13 +31,12 @@ const Navbaar = ({setInputSearch, addMovie, setRateSearch,rateSearch}) => {
         </Nav>
         <Form className="d-flex">
         <ReactStars
-    count={5}
-    size={24}
-    // value={5}
-    activeColor="#ffd700"
-    classNames="navRates"
-    onChange={(e)=>setRateSearch(e)}
-  />
+        className="navRates"
+        count={5}
+        onChange={(e)=>setRate(e)}
+        size={24}
+        activeColor="#ffd700"
+      />
           <FormControl
             type="search"
             placeholder="Search your movie"

@@ -24,7 +24,7 @@ export const Films = [
   {
     id : uuidv4(),
     title: "Bad Boys",
-    rating: 2,
+    
     affiche:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQObZYCWpeDfM67rDldPTstK-iikQrIgg0zTQ&usqp=CAU",
     description: "This is description",
